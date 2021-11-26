@@ -1,13 +1,14 @@
 const express = require("express");
 const app = express();
 
+const PORT = process.env.PORT || 3000;
 app.use(express.static("../build"));
 
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/build/index.html");
 });
 
-app.listen(3000, () => {
+app.listen(PORT, () => {
   console.log("server is running");
 });
 // 클라이언트에서 빌드하고 빌드 폴더를 서버에 옮김
