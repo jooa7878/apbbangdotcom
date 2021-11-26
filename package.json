@@ -4,15 +4,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "client-build": "cd client && npm ci && npm run build && cd ../",
-    "server-build": "cd server && npm ci && cd ../",
-    "heroku-prebuild": "npm run client-build && npm run server-build && mv ./client/build ./server/build ",
-    "start": "cd server && npm run start",
+    "heroku-prebuild": "cd client && npm ci && npm run build && mv build ../server",
+    "start" : "cd server && npm ci && tsc && node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jooa7878/apbbangdotcom.git"
   },
   "author": "",
   "license": "ISC",
-  "optionalDependencies": {
-    "fsevents": "^2.3.2"
-  }
+  "bugs": {
+    "url": "https://github.com/jooa7878/apbbangdotcom/issues"
+  },
+  "homepage": "https://github.com/jooa7878/apbbangdotcom#readme"
 }
