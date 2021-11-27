@@ -4,23 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-<<<<<<< HEAD
-<<<<<<< HEAD
-    "client-build": "cd client && npm ci && npm run build && cd ../",
-    "server-build": "cd server && npm ci --dev && npm run build && cd ../",
-    "heroku-prebuild": "npm run client-build && npm run server-build && mv ./client/build ./server/dist/build",
-    "start": "cd server && npm run start",
-=======
-=======
->>>>>>> parent of 0012c90 (fix fsevent)
     "client-build" : "cd client && npm ci && npm run build && cd ../",
     "server-build" : "cd server && npm ci && cd ../",
-    "heroku-prebuild": "npm run client-build && npm run server-build && mv ./client/build ./server/build ",
+    "heroku-prebuild" : "npm run client-build && npm run server-build && mv ./client/build ./server",
     "start" : "cd server && npm run start",
-<<<<<<< HEAD
->>>>>>> parent of 0012c90 (fix fsevent)
-=======
->>>>>>> parent of 0012c90 (fix fsevent)
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -28,20 +15,9 @@
     "url": "git+https://github.com/jooa7878/apbbangdotcom.git"
   },
   "author": "",
-<<<<<<< HEAD
-<<<<<<< HEAD
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/jooa7878/apbbangdotcom/issues"
   },
-  "homepage": "https://github.com/jooa7878/apbbangdotcom#readme",
-  "optionalDependencies": {
-    "fsevents": "^2.3.2"
-  }
-=======
-  "license": "ISC"
->>>>>>> parent of 0012c90 (fix fsevent)
-=======
-  "license": "ISC"
->>>>>>> parent of 0012c90 (fix fsevent)
+  "homepage": "https://github.com/jooa7878/apbbangdotcom#readme"
 }
