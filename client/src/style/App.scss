@@ -5,3 +5,10 @@
 .App {
   font-family: "Nanum Gothic", sans-serif;
 }
+
+.main_container {
+  max-width: 1024px;
+  min-width: 320px;
+  margin: 0 auto;
+  padding: 40px;
+}

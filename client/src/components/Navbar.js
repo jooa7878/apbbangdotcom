@@ -13,10 +13,10 @@ function Navbar() {
           </Link>
         </div>
         <div className="inner_right">
-          <Link to="/" className="link item">
+          <Link to="/signup" className="link item">
             회원가입
           </Link>
-          <Link to="/" className="link item">
+          <Link to="/signin" className="link item">
             로그인
           </Link>
         </div>
