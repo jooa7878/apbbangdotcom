@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route } from "react-router-dom";
+import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import SignIn from "../pages/SignIn";
 import SignUp from "../pages/SignUp";
@@ -17,6 +18,7 @@ function App() {
             <Route path="/signin" exact component={SignIn} />
           </main>
         </BrowserRouter>
+        {/* <Footer></Footer> */}
       </div>
     </div>
   );
