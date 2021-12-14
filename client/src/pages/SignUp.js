@@ -25,8 +25,8 @@ function SignUp() {
       window.alert("아이디를 입력해주세요.");
     } else if (!idRegExp.test(userIDValue)) {
       window.alert("아이디 양식을 확인하세요");
-    } else if (userIDValue.length < 8) {
-      window.alert("8자리 이상의 아이디를 입력해주세요.");
+    } else if (userIDValue.length < 6) {
+      window.alert("6자리 이상의 아이디를 입력해주세요.");
     } else if (userNameValue === "") {
       window.alert("이름을 입력해주세요.");
     } else if (userPassword === "" || userPassword.length < 8) {
@@ -45,8 +45,8 @@ function SignUp() {
 
     if (userID === "" && userID.trim() === "") {
       window.alert("아이디를 입력해주세요.");
-    } else if (userID.length < 8) {
-      window.alert("8자리 이상의 아이디를 입력해주세요.");
+    } else if (userID.length < 6) {
+      window.alert("6자리 이상의 아이디를 입력해주세요.");
     } else {
       setIsDuplicate(true);
       window.alert("아이디 입력 데이터 확인, 추후 업데이트 예정입니다");
@@ -64,7 +64,7 @@ function SignUp() {
           <input
             className="form_input"
             type="text"
-            placeholder="영문 + 숫자로 구성, 8자리 이상"
+            placeholder="영문 + 숫자로 구성, 6자리 이상"
             autoComplete="off"
             onChange={(e) => {
               setUserID(e.target.value);

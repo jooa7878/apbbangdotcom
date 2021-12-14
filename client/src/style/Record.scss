@@ -1,0 +1,27 @@
+.record_container {
+  width: 400px;
+  box-sizing: border-box;
+  height: 350px;
+  padding: 20px;
+  border: 1px solid #cdcdcd;
+  float: left;
+
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  .record_title {
+    float: left;
+  }
+  .record_btn_container {
+    float: right;
+
+    .btn {
+      border: 0;
+      background-color: transparent;
+      cursor: pointer;
+    }
+  }
+}

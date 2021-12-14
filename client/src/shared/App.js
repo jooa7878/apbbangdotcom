@@ -4,7 +4,7 @@ import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import SignIn from "../pages/SignIn";
 import SignUp from "../pages/SignUp";
-
+import Home from "../pages/Home";
 import "../style/App.scss";
 
 function App() {
@@ -14,6 +14,7 @@ function App() {
         <BrowserRouter>
           <Navbar></Navbar>
           <main className="main_container">
+            <Route path="/" exact component={Home} />
             <Route path="/signup" exact component={SignUp} />
             <Route path="/signin" exact component={SignIn} />
           </main>

@@ -20,8 +20,8 @@ function SignIn() {
       window.alert("아이디를 입력해주세요.");
     } else if (!idRegExp.test(userIDValue)) {
       window.alert("아이디 양식을 확인하세요");
-    } else if (userIDValue.length < 8) {
-      window.alert("8자리 이상의 아이디를 입력해주세요.");
+    } else if (userIDValue.length < 6) {
+      window.alert("6자리 이상의 아이디를 입력해주세요.");
     } else if (userPassword === "" || userPassword.length < 8) {
       window.alert("비밀번호를 입력해주세요.");
     } else {
@@ -40,7 +40,7 @@ function SignIn() {
           <input
             className="form_input"
             type="text"
-            placeholder="영문 + 숫자로 구성, 8자리 이상"
+            placeholder="영문 + 숫자로 구성, 6자리 이상"
             autoComplete="off"
             onChange={(e) => {
               setUserID(e.target.value);

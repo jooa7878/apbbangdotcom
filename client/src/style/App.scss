@@ -2,10 +2,66 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap");
 
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+ol,
+dl,
+dd,
+p,
+fieldset,
+legend {
+  margin: 0;
+  padding: 0;
+}
+
+body,
+input,
+textarea,
+select,
+button {
+  font-size: 14px;
+  font-family: "Nanum Gothic", sans-serif;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+em {
+  font-style: normal;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+fieldset {
+  border: 0;
+}
+
 .App {
   min-height: 100vh;
   position: relative;
-  font-family: "Nanum Gothic", sans-serif;
 }
 
 .main_container {

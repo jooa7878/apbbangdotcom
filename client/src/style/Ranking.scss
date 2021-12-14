@@ -1,0 +1,13 @@
+.ranking_container {
+  float: right;
+  box-sizing: border-box;
+  width: 200px;
+  height: 350px;
+  padding: 20px 0;
+  text-align: center;
+  border: 1px solid #cdcdcd;
+
+  .ranking_title {
+    font-size: 20px;
+  }
+}
