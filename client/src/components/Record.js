@@ -50,10 +50,10 @@ function Record() {
     for (let i = 0; i < 4; i++) {
       renderList.push(
         <li className="record_item">
-          <span className="record_num">{list[i].id + 1}</span>
           <div className="record_info">
             {list[i].winner_player === 1 ? (
               <>
+                <span className="winner_sign">W</span>
                 <span className="record_span winner">{list[i].player_1}</span>
                 vs
                 <span className="record_span">{list[i].player_2}</span>
@@ -63,6 +63,7 @@ function Record() {
                 <span className="record_span">{list[i].player_1}</span>
                 vs
                 <span className="record_span winner">{list[i].player_2}</span>
+                <span className="winner_sign">W</span>
               </>
             )}
           </div>

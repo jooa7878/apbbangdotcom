@@ -44,12 +44,22 @@
     display: flex;
     justify-content: space-evenly;
     line-height: 30px;
-    .record_span {
-      margin: 0 10px;
-      font-size: 18px;
 
-      &.winner {
-        font-weight: bold;
+    .record_info {
+      .winner_sign {
+        display: inline-block;
+        background-color: #287db6e1;
+        color: #fff;
+        font-size: 18px;
+        border-radius: 10%;
+      }
+      .record_span {
+        margin: 0 10px;
+        font-size: 18px;
+
+        &.winner {
+          font-weight: bold;
+        }
       }
     }
   }
@@ -65,4 +75,8 @@
   font-size: 20px;
   color: #fff;
   transition: 0.2s;
+
+  &:hover {
+    background-color: #178ddbe1;
+  }
 }
