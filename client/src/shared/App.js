@@ -5,6 +5,7 @@ import Navbar from "../components/Navbar";
 import SignIn from "../pages/SignIn";
 import SignUp from "../pages/SignUp";
 import Home from "../pages/Home";
+import CreateRecord from "../pages/CreateRecord";
 import "../style/App.scss";
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
             <Route path="/" exact component={Home} />
             <Route path="/signup" exact component={SignUp} />
             <Route path="/signin" exact component={SignIn} />
+            <Route path="/createrecord" exact component={CreateRecord} />
           </main>
         </BrowserRouter>
         {/* <Footer></Footer> */}

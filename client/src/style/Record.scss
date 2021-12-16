@@ -14,14 +14,55 @@
 
   .record_title {
     float: left;
+    width: 200px;
+    line-height: 30px;
   }
+
   .record_btn_container {
     float: right;
+    width: 150px;
+    text-align: right;
+    line-height: 30px;
 
     .btn {
       border: 0;
       background-color: transparent;
       cursor: pointer;
+
+      &.selected {
+        color: #230deb;
+        font-weight: bold;
+      }
     }
   }
+}
+
+.record_list {
+  margin: 50px 0;
+
+  .record_item {
+    display: flex;
+    justify-content: space-evenly;
+    line-height: 30px;
+    .record_span {
+      margin: 0 10px;
+      font-size: 18px;
+
+      &.winner {
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+.record_link {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  width: 200px;
+  background-color: #287db6e1;
+  padding: 20px;
+  font-size: 20px;
+  color: #fff;
+  transition: 0.2s;
 }
