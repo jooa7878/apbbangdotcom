@@ -50,6 +50,7 @@ function CreateRecord() {
             type="text"
             id="player_1"
             className="form_input"
+            autoComplete="off"
             onChange={(e) => {
               setPlayer_1(e.target.value);
             }}
@@ -63,6 +64,7 @@ function CreateRecord() {
             type="text"
             id="player_2"
             className="form_input"
+            autoComplete="off"
             onChange={(e) => {
               setPlayer_2(e.target.value);
             }}
@@ -76,6 +78,7 @@ function CreateRecord() {
             type="text"
             id="winner"
             className="form_input"
+            autoComplete="off"
             onChange={(e) => {
               setWinner(e.target.value);
             }}
