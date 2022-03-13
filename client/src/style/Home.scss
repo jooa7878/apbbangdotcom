@@ -1,8 +1,0 @@
-.home_container {
-  margin: 0 auto;
-  &::after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-}

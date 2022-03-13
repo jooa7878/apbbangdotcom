@@ -1,1 +1,3 @@
-# 친구들과의 스타 기록을 관리해주는 안폰빵닷컴!
+# APBDotCom
+
+## This Project Will Be Renewed
