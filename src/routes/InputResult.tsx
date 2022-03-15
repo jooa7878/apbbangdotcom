@@ -1,8 +1,10 @@
+import { addDoc, collection } from "firebase/firestore";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import { Races } from "../atom";
+import { dbService } from "../firebase";
 
 const Form = styled.form`
   margin: 0 auto;
@@ -62,8 +64,9 @@ export interface IResult {
   winner: string;
   loser: string;
   map: string;
-  id: number;
-  race: Races;
+  createdAt: number;
+  winnerRace: Races;
+  loserRace: Races;
 }
 
 export default function InputResult() {
@@ -77,23 +80,35 @@ export default function InputResult() {
 
   const history = useHistory();
   const races = Races;
-  const [race, setRace] = useState("Protoss");
 
-  const onSubmit = () => {
+  const onSubmit = async ({
+    winner,
+    loser,
+    winnerRace,
+    loserRace,
+    createdAt,
+    map,
+  }: IResult) => {
     const ok = window.confirm("경기 결과를 입력하시겠습니까?");
     if (ok) {
-      setValue("winner", "");
-      setValue("loser", "");
-      setValue("map", "");
-      // history.push("/")
+      try {
+        await addDoc(collection(dbService, "matchHistory"), {
+          createdAt: Date.now(),
+          winner: {
+            winner,
+            winnerRace,
+          },
+          loser: {
+            loser,
+            loserRace,
+          },
+          map,
+        });
+        history.push("/");
+      } catch (error) {
+        console.log(error);
+      }
     }
-  };
-
-  const onInput = (e: React.FormEvent<HTMLSelectElement>) => {
-    const {
-      currentTarget: { value },
-    } = e;
-    setRace(value as any);
   };
 
   return (
@@ -108,7 +123,7 @@ export default function InputResult() {
           placeholder="승자 입력하기"
         />
         <Select
-          {...register("race", {
+          {...register("winnerRace", {
             required: "종족을 입력하세요",
           })}
         >
@@ -126,7 +141,11 @@ export default function InputResult() {
           type="text"
           placeholder="패자 입력하기"
         />
-        <Select value={race} onInput={onInput}>
+        <Select
+          {...register("loserRace", {
+            required: "종족을 입력하세요",
+          })}
+        >
           <option value={Races.Protoss}>Protoss</option>
           <option value={Races.Terran}>Terran</option>
           <option value={Races.Zerg}>Zerg</option>
