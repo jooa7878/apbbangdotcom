@@ -1,4 +1,14 @@
-import { addDoc, collection } from "firebase/firestore";
+import {
+  query,
+  addDoc,
+  collection,
+  where,
+  onSnapshot,
+  getDocs,
+  setDoc,
+  doc,
+  getDoc,
+} from "firebase/firestore";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
@@ -64,9 +74,9 @@ export interface IResult {
   winner: string;
   loser: string;
   map: string;
-  createdAt: number;
   winnerRace: Races;
   loserRace: Races;
+  date: Date;
 }
 
 export default function InputResult() {
@@ -86,8 +96,8 @@ export default function InputResult() {
     loser,
     winnerRace,
     loserRace,
-    createdAt,
     map,
+    date,
   }: IResult) => {
     const ok = window.confirm("경기 결과를 입력하시겠습니까?");
     if (ok) {
@@ -103,7 +113,49 @@ export default function InputResult() {
             loserRace,
           },
           map,
+          date,
         });
+
+        const q = query(collection(dbService, "user"));
+        const userDocs = await getDocs(q);
+        const winnerIdx = userDocs.docs.findIndex(
+          (doc) => doc.id.replaceAll(" ", "") === winner.replaceAll(" ", "")
+        );
+
+        if (winnerIdx !== -1) {
+          // exist
+          const target = userDocs.docs[winnerIdx].data();
+
+          await setDoc(doc(collection(dbService, "user"), winner), {
+            win: [...target.win, date],
+            lose: target.lose,
+          });
+        } else {
+          await setDoc(doc(collection(dbService, "user"), winner), {
+            win: [date],
+            lose: [],
+          });
+        }
+
+        const loserIdx = userDocs.docs.findIndex(
+          (doc) => doc.id.replaceAll(" ", "") === loser.replaceAll(" ", "")
+        );
+
+        if (loserIdx !== -1) {
+          // exist
+          const target = userDocs.docs[loserIdx].data();
+
+          await setDoc(doc(collection(dbService, "user"), loser), {
+            win: target.win,
+            lose: [...target.lose, date],
+          });
+        } else {
+          await setDoc(doc(collection(dbService, "user"), loser), {
+            win: [],
+            lose: [date],
+          });
+        }
+        alert("입력이 완료되었습니다.");
         history.push("/");
       } catch (error) {
         console.log(error);
@@ -113,6 +165,12 @@ export default function InputResult() {
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
+      <input
+        type="date"
+        {...register("date", {
+          required: "날짜를 입력해주세요",
+        })}
+      />
       <FormDiv>
         <Label>Winner</Label>
         <Input
