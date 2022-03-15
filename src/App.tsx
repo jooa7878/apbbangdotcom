@@ -63,7 +63,7 @@ font-family: 'Stylish', sans-serif;
   color : ${(props) => props.theme.textColor};
 }
 
-button {
+button, input, select {
   font-family: inherit;
 }
 
