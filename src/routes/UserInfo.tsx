@@ -4,7 +4,7 @@ import { Search } from "@material-ui/icons";
 import { collection, getDocs, query } from "firebase/firestore";
 import { dbService } from "../firebase";
 import { useEffect, useState } from "react";
-import ApexCharts from "apexcharts";
+import ApexChart from "react-apexcharts";
 import CircularProgress from "@mui/material/CircularProgress";
 
 const Container = styled.div`
@@ -65,8 +65,8 @@ interface IInput {
 }
 
 interface IUser {
-  win: string;
-  lose: string;
+  win: string[];
+  lose: string[];
 }
 
 interface IWinSet {
@@ -83,10 +83,9 @@ export default function UserInfo() {
     formState: { errors },
   } = useForm<IInput>();
   const [loading, setLoading] = useState(false);
-  const [user, setUser] = useState<IUser[]>();
+  const [user, setUser] = useState<IUser>();
   const [wSet, setWSet] = useState<IWinSet[]>();
   const [lSet, setLSet] = useState<ILoseSet[]>();
-
   const onSubmit = async ({ username }: IInput) => {
     setLoading(true);
     try {
@@ -99,7 +98,7 @@ export default function UserInfo() {
 
       if (userIdx !== -1) {
         const target = userDocs.docs[userIdx].data();
-        setUser([{ win: target.win, lose: target.lose }]);
+        setUser({ win: target.win, lose: target.lose });
         setWSet(Array.from(new Set([...target.win])));
         setLSet(Array.from(new Set([...target.lose])));
       } else {
@@ -110,6 +109,11 @@ export default function UserInfo() {
     }
     setLoading(false);
   };
+
+  // console.log(user);
+  // console.log(wSet);
+  // console.log(lSet);
+  let sum = 0;
 
   return (
     <Container>
@@ -130,17 +134,51 @@ export default function UserInfo() {
           <ErrorDiv>{Object.entries(errors)[0][1].message}</ErrorDiv>
         ) : null}
       </Form>
-      {/* <UserContainer>
+      <UserContainer>
         {loading ? (
           <CircularProgress />
-        ) : user?.hasOwnProperty("win") ? (
+        ) : user ? (
           <>
-            <UserTitle>검색 결과</UserTitle>
+            <UserTitle>승리 그래프</UserTitle>
+            <ApexChart
+              type="line"
+              series={[
+                {
+                  name: "승리",
+                  data: wSet
+                    ?.map((w) => {
+                      return user?.win?.filter((v) => v === (w as any)).length;
+                    })
+                    .map((elem) => (sum += elem as any)) as any,
+                },
+              ]}
+              options={{
+                theme: { mode: "dark" },
+                chart: {
+                  height: 300,
+                  width: 480,
+                  toolbar: {
+                    show: false,
+                  },
+                  background: "transparent",
+                },
+                grid: { show: false },
+                xaxis: {
+                  axisBorder: { show: false },
+                  labels: {
+                    show: false,
+                  },
+                  axisTicks: { show: false },
+                  categories: wSet?.map((w) => w),
+                  type: "datetime",
+                },
+              }}
+            />
           </>
         ) : (
           <ErrorDiv>검색 결과가 없습니다.</ErrorDiv>
         )}
-      </UserContainer> */}
+      </UserContainer>
     </Container>
   );
 }
