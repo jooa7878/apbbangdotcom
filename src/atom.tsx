@@ -1,3 +1,4 @@
+import { Timestamp } from "firebase/firestore";
 import { atom } from "recoil";
 
 export enum Races {
@@ -18,6 +19,7 @@ export interface IMatch {
     winnerRace: string;
   };
   map: string;
+  date: Timestamp;
 }
 
 export const matchState = atom<IMatch[]>({

@@ -5,14 +5,14 @@ import {
   query,
   where,
 } from "firebase/firestore";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link as ReactRouterDomLink } from "react-router-dom";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import styled from "styled-components";
 import { IMatch, matchState } from "../atom";
 import MatchHistory from "../components/MatchHistory";
 import { dbService } from "../firebase";
-
+import CircularProgress from "@mui/material/CircularProgress";
 const Link = (props: any) => {
   return <ReactRouterDomLink {...props}>{props.children}</ReactRouterDomLink>;
 };
@@ -77,11 +77,11 @@ const EmptyMsg = styled.p`
 
 export default function Home() {
   const [matchList, setMatchList] = useRecoilState(matchState);
-
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     const q = query(
       collection(dbService, "matchHistory"),
-      orderBy("createdAt", "desc")
+      orderBy("date", "desc")
     );
 
     onSnapshot(q, (snapshot) => {
@@ -91,30 +91,39 @@ export default function Home() {
       }));
 
       setMatchList(list as any);
+      setLoading(false);
     });
   }, []);
 
   return (
     <>
-      <StyledLink to="/inputresult">전적 입력하러 가기</StyledLink>
-
-      {matchList.length > 0 ? (
-        <>
-          <MsgDiv>
-            <Msg>최근 경기 기록</Msg>
-            <MoreLink to="/totalmatch">더 보기</MoreLink>
-          </MsgDiv>
-          <MatchDiv>
-            {matchList?.slice(0, 5)?.map((match: IMatch) => {
-              return <MatchHistory key={match.id} {...match} />;
-            })}
-          </MatchDiv>
-        </>
+      {loading ? (
+        <div style={{ textAlign: "center" }}>
+          <CircularProgress />
+        </div>
       ) : (
-        <EmptyMsg>
-          최근 경기 기록이 없습니다.
-          <br /> 전적을 입력하여 기록을 추가해보세요!
-        </EmptyMsg>
+        <>
+          <StyledLink to="/inputresult">전적 입력하러 가기</StyledLink>
+
+          {matchList.length > 0 ? (
+            <>
+              <MsgDiv>
+                <Msg>최근 경기 기록</Msg>
+                <MoreLink to="/totalmatch">더 보기</MoreLink>
+              </MsgDiv>
+              <MatchDiv>
+                {matchList?.slice(0, 5)?.map((match: IMatch) => {
+                  return <MatchHistory key={match.id} {...match} />;
+                })}
+              </MatchDiv>
+            </>
+          ) : (
+            <EmptyMsg>
+              최근 경기 기록이 없습니다.
+              <br /> 전적을 입력하여 기록을 추가해보세요!
+            </EmptyMsg>
+          )}
+        </>
       )}
     </>
   );
