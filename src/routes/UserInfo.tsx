@@ -72,9 +72,6 @@ interface IUser {
 interface IWinSet {
   win: string;
 }
-interface ILoseSet {
-  lose: string;
-}
 
 export default function UserInfo() {
   const {
@@ -85,7 +82,6 @@ export default function UserInfo() {
   const [loading, setLoading] = useState(false);
   const [user, setUser] = useState<IUser>();
   const [wSet, setWSet] = useState<IWinSet[]>();
-  const [lSet, setLSet] = useState<ILoseSet[]>();
   const onSubmit = async ({ username }: IInput) => {
     setLoading(true);
     try {
@@ -100,7 +96,6 @@ export default function UserInfo() {
         const target = userDocs.docs[userIdx].data();
         setUser({ win: target.win, lose: target.lose });
         setWSet(Array.from(new Set([...target.win])));
-        setLSet(Array.from(new Set([...target.lose])));
       } else {
         alert("검색 결과가 없습니다.");
       }
@@ -110,9 +105,6 @@ export default function UserInfo() {
     setLoading(false);
   };
 
-  // console.log(user);
-  // console.log(wSet);
-  // console.log(lSet);
   let sum = 0;
 
   return (
