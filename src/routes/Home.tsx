@@ -13,6 +13,7 @@ import { IMatch, matchState } from "../atom";
 import MatchHistory from "../components/MatchHistory";
 import { dbService } from "../firebase";
 import CircularProgress from "@mui/material/CircularProgress";
+
 const Link = (props: any) => {
   return <ReactRouterDomLink {...props}>{props.children}</ReactRouterDomLink>;
 };
@@ -124,6 +125,9 @@ export default function Home() {
               <br /> 전적을 입력하여 기록을 추가해보세요!
             </EmptyMsg>
           )}
+
+          <StyledLink to="/userinfo">유저 통계 보러 가기 </StyledLink>
+          <StyledLink to="/ranking">랭킹 보러 가기</StyledLink>
         </>
       )}
     </>

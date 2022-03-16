@@ -99,6 +99,10 @@ export default function InputResult() {
     map,
     date,
   }: IResult) => {
+    if (winner.replaceAll(" ", "") === loser.replaceAll(" ", "")) {
+      alert("승자와 패자의 이름은 달라야합니다.");
+      return;
+    }
     const ok = window.confirm("경기 결과를 입력하시겠습니까?");
     if (ok) {
       try {

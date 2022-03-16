@@ -14,7 +14,13 @@ const MatchBox = styled.li`
 export default function MatchHistory({ winner, loser }: IMatch) {
   return (
     <MatchBox>
-      <Check style={{ fontSize: 16 }} />
+      <Check
+        style={{
+          verticalAlign: "middle",
+          marginRight: 5,
+          color: `${(props: any) => props.theme.accentColor}`,
+        }}
+      />
       {winner?.winner} vs {loser?.loser}
     </MatchBox>
   );

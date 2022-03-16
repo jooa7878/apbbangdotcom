@@ -1,8 +1,9 @@
 import { useRecoilValue } from "recoil";
 import styled from "styled-components";
 import { matchState } from "../atom";
-import { Check, More } from "@material-ui/icons";
-import React, { useEffect, useState } from "react";
+import { Check } from "@material-ui/icons";
+import React, { useState } from "react";
+import CircularProgress from "@mui/material/CircularProgress";
 
 const TotalContainer = styled.div`
   margin: 20px auto;
@@ -47,8 +48,10 @@ const RightSpan = styled.div`
 export default function TotalMatch() {
   const matchList = useRecoilValue(matchState);
   const [renderList, setRenderList] = useState(matchList?.slice(0, 5));
+  const [loading, setLoading] = useState(false);
 
   const onBtnClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    setLoading(true);
     if (matchList.length - renderList.length > 5) {
       setRenderList([
         ...renderList,
@@ -66,7 +69,10 @@ export default function TotalMatch() {
         e.currentTarget.style.display = "none";
       }
     }
+
+    setLoading(false);
   };
+
   return (
     <TotalContainer>
       <MatchList>
@@ -81,7 +87,11 @@ export default function TotalMatch() {
           );
         })}
       </MatchList>
-      <MoreBtn onClick={onBtnClick}>더 보기</MoreBtn>
+      {loading ? (
+        <CircularProgress />
+      ) : (
+        <MoreBtn onClick={onBtnClick}>더 보기</MoreBtn>
+      )}
     </TotalContainer>
   );
 }

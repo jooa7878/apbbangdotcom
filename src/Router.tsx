@@ -5,6 +5,8 @@ import Login from "./routes/Login";
 import InputResult from "./routes/InputResult";
 import Footer from "./components/Footer";
 import TotalMatch from "./routes/TotalMatch";
+import UserInfo from "./routes/UserInfo";
+import Ranking from "./routes/Ranking";
 
 export default function Router() {
   return (
@@ -14,6 +16,8 @@ export default function Router() {
       <Route path="/login" exact component={Login} />
       <Route path="/inputresult" exact component={InputResult} />
       <Route path="/totalmatch" exact component={TotalMatch} />
+      <Route path="/userinfo" exact component={UserInfo} />
+      <Route path="/ranking" exact component={Ranking} />
       <Footer />
     </BrowserRouter>
   );
