@@ -2,7 +2,7 @@ import { useRecoilValue } from "recoil";
 import styled from "styled-components";
 import { matchState } from "../atom";
 import { Check, More } from "@material-ui/icons";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const TotalContainer = styled.div`
   margin: 20px auto;
@@ -52,7 +52,7 @@ export default function TotalMatch() {
     if (matchList.length - renderList.length > 5) {
       setRenderList([
         ...renderList,
-        ...matchList.slice(renderList.length, renderList.length + 4),
+        ...matchList.slice(renderList.length, renderList.length + 5),
       ]);
     } else {
       setRenderList([
@@ -72,11 +72,11 @@ export default function TotalMatch() {
       <MatchList>
         {renderList.map((match) => {
           return (
-            <MatchItem key={match.id}>
-              <LeftSpan>{match.date}</LeftSpan>
-              {match.loser.loser} {match.loser.loserRace} vs
-              {match.winner.winner} {match.winner.winnerRace} <Check />
-              <RightSpan>{match.map}</RightSpan>
+            <MatchItem key={match?.id}>
+              <LeftSpan>{match?.date}</LeftSpan>
+              {match?.loser?.loser} {match?.loser?.loserRace} vs
+              {match?.winner?.winner} {match?.winner?.winnerRace} <Check />
+              <RightSpan>{match?.map}</RightSpan>
             </MatchItem>
           );
         })}

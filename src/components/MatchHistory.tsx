@@ -11,14 +11,11 @@ const MatchBox = styled.li`
   }
 `;
 
-export default function MatchHistory({
-  winner: { winner },
-  loser: { loser },
-}: IMatch) {
+export default function MatchHistory({ winner, loser }: IMatch) {
   return (
     <MatchBox>
       <Check style={{ fontSize: 16 }} />
-      {winner} vs {loser}
+      {winner?.winner} vs {loser?.loser}
     </MatchBox>
   );
 }

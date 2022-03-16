@@ -81,7 +81,8 @@ export default function Home() {
   useEffect(() => {
     const q = query(
       collection(dbService, "matchHistory"),
-      orderBy("date", "desc")
+      orderBy("date", "desc"),
+      orderBy("createdAt", "desc")
     );
 
     onSnapshot(q, (snapshot) => {
