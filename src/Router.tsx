@@ -1,4 +1,4 @@
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route, HashRouter } from "react-router-dom";
 import Home from "./routes/Home";
 import Navigation from "./components/Navigation";
 import Login from "./routes/Login";
@@ -10,7 +10,7 @@ import Ranking from "./routes/Ranking";
 
 export default function Router() {
   return (
-    <BrowserRouter>
+    <HashRouter basename={process.env.PUBLIC_URL}>
       <Navigation />
       <Route path="/" exact component={Home} />
       <Route path="/login" exact component={Login} />
@@ -19,6 +19,6 @@ export default function Router() {
       <Route path="/userinfo" exact component={UserInfo} />
       <Route path="/ranking" exact component={Ranking} />
       <Footer />
-    </BrowserRouter>
+    </HashRouter>
   );
 }
