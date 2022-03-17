@@ -1,12 +1,5 @@
 # APBDotCom
 
-```
-
-npm install
-npm run start
-
-```
-
 ## 프로젝트 제작 이유
 
 친구들과 스타크래프트라는 게임을 즐겨합니다. <br/>
