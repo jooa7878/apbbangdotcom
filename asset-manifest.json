@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/apbbangdotcom/static/js/main.f938e8b3.js",
+    "main.js": "/apbbangdotcom/static/js/main.f832cbe1.js",
     "index.html": "/apbbangdotcom/index.html",
-    "main.f938e8b3.js.map": "/apbbangdotcom/static/js/main.f938e8b3.js.map"
+    "main.f832cbe1.js.map": "/apbbangdotcom/static/js/main.f832cbe1.js.map"
   },
   "entrypoints": [
-    "static/js/main.f938e8b3.js"
+    "static/js/main.f832cbe1.js"
   ]
 }
