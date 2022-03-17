@@ -1,5 +1,7 @@
+import { useSetRecoilState } from "recoil";
 import styled from "styled-components";
 import { createGlobalStyle } from "styled-components";
+import { loginState } from "./atom";
 import Router from "./Router";
 
 const GlobalStyle = createGlobalStyle`

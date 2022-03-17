@@ -41,8 +41,20 @@ export const matchState = atom<IMatch[]>({
   effects_UNSTABLE: [localStorageEffect("matchHistory")],
 });
 
+const sessionStorageEffect =
+  (key: string) =>
+  ({ setSelf, onSet }: any) => {
+    const savedValue = sessionStorage.getItem(key);
+    if (savedValue != null) {
+      setSelf(JSON.parse(savedValue));
+    }
+    onSet((newValue: IMatch[]) => {
+      sessionStorage.setItem(key, JSON.stringify(newValue));
+    });
+  };
+
 export const loginState = atom({
   key: "islogin",
   default: false,
-  effects_UNSTABLE: [localStorageEffect("isLogin")],
+  effects_UNSTABLE: [sessionStorageEffect("isLogin")],
 });
