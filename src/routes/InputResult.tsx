@@ -2,18 +2,16 @@ import {
   query,
   addDoc,
   collection,
-  where,
-  onSnapshot,
   getDocs,
   setDoc,
   doc,
-  getDoc,
 } from "firebase/firestore";
-import React, { useState } from "react";
+
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
+import { useRecoilValue } from "recoil";
 import styled from "styled-components";
-import { Races } from "../atom";
+import { loginState, Races } from "../atom";
 import { dbService } from "../firebase";
 
 const Form = styled.form`
@@ -84,12 +82,10 @@ export default function InputResult() {
     register,
     handleSubmit,
     formState: { errors },
-    setValue,
-    getValues,
   } = useForm<IResult>();
 
   const history = useHistory();
-  const races = Races;
+  const isLogin = useRecoilValue(loginState);
 
   const onSubmit = async ({
     winner,
@@ -99,6 +95,12 @@ export default function InputResult() {
     map,
     date,
   }: IResult) => {
+    if (!isLogin) {
+      history.replace("/login");
+
+      alert("로그인 후 이용 가능합니다.");
+      return;
+    }
     if (winner.replaceAll(" ", "") === loser.replaceAll(" ", "")) {
       alert("승자와 패자의 이름은 달라야합니다.");
       return;

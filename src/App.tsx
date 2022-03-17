@@ -1,9 +1,11 @@
 import styled from "styled-components";
 import { createGlobalStyle } from "styled-components";
-import Navigation from "./components/Navigation";
 import Router from "./Router";
 
 const GlobalStyle = createGlobalStyle`
+
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&family=Source+Sans+Pro:wght@300;400&family=Stylish&display=swap');
+
  html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -57,14 +59,15 @@ table {
 }
 
 body {
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Nanum Gothic', sans-serif;
+font-family: 'Source Sans Pro', sans-serif;
 font-family: 'Stylish', sans-serif;
   background-color : ${(props) => props.theme.bgColor};
   color : ${(props) => props.theme.textColor};
 }
 
 button, input, select {
-  font-family: inherit;
+  font-family : inherit;
 }
 
 a{

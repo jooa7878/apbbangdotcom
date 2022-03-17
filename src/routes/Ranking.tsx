@@ -75,7 +75,7 @@ export default function Ranking() {
             {ranking?.map((rank, idx) => {
               if (idx === 0) {
                 return (
-                  <RankingItem style={{ color: "#51f542" }}>
+                  <RankingItem key={idx} style={{ color: "#51f542" }}>
                     <Star
                       style={{
                         verticalAlign: "middle",
@@ -83,15 +83,15 @@ export default function Ranking() {
                       }}
                     />
                     {rank.id}
-                    <UserWins>{rank.win.length}</UserWins>
+                    <UserWins>{rank.win.length} 승</UserWins>
                   </RankingItem>
                 );
               } else {
                 return (
-                  <RankingItem>
+                  <RankingItem key={idx}>
                     <RankingIdx>{idx + 1}</RankingIdx>
                     {rank.id}
-                    <UserWins>{rank.win.length}</UserWins>
+                    <UserWins>{rank.win.length} 승</UserWins>
                   </RankingItem>
                 );
               }

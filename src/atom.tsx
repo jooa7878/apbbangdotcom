@@ -44,4 +44,5 @@ export const matchState = atom<IMatch[]>({
 export const loginState = atom({
   key: "islogin",
   default: false,
+  effects_UNSTABLE: [localStorageEffect("isLogin")],
 });
