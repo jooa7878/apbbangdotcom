@@ -55,7 +55,7 @@ const Msg = styled.p`
 const MoreLink = styled(Link)`
   position: absolute;
   top: 10px;
-  right: 15px;
+  right: 0;
   padding: 5px;
   &:hover {
     border: 1px solid ${(props) => props.theme.textColor};

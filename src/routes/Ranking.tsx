@@ -8,7 +8,7 @@ import { Star } from "@material-ui/icons";
 const RankingDiv = styled.div`
   margin-top: 10px;
   text-align: center;
-  width: 350px;
+  width: 300px;
   margin: 0 auto;
 `;
 

@@ -80,7 +80,7 @@ a{
 
 const Container = styled.div`
   padding: 0 40px;
-  width: 480px;
+  width: 380px;
   margin: 0 auto;
 `;
 

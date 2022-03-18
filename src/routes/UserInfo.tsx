@@ -8,7 +8,6 @@ import ApexChart from "react-apexcharts";
 import CircularProgress from "@mui/material/CircularProgress";
 
 const Container = styled.div`
-  margin: 0 auto;
   padding: 20px;
   text-align: center;
 `;
@@ -20,12 +19,12 @@ const FormDiv = styled.div`
 `;
 
 const Input = styled.input`
-  width: 150px;
+  width: 170px;
   border: 0;
   border-radius: 20px;
   padding: 5px 10px;
   text-align: center;
-  margin-right: 10px;
+  margin: 0 10px;
 `;
 
 const SearchBtn = styled.button`
@@ -44,7 +43,7 @@ const SearchBtn = styled.button`
 
 const ErrorDiv = styled.div`
   margin: 0 auto;
-  width: 350px;
+  width: 200px;
   margin-top: 20px;
   padding: 10px;
   color: ${(props) => props.theme.textColor};
@@ -147,8 +146,6 @@ export default function UserInfo() {
               options={{
                 theme: { mode: "dark" },
                 chart: {
-                  height: 300,
-                  width: 480,
                   toolbar: {
                     show: false,
                   },

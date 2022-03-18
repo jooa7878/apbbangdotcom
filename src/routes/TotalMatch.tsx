@@ -32,7 +32,7 @@ const MoreBtn = styled.button`
 
 const LeftSpan = styled.div`
   float: left;
-  width: 20%;
+  width: 22%;
   text-align: center;
 `;
 
@@ -79,9 +79,10 @@ export default function TotalMatch() {
         {renderList.map((match) => {
           return (
             <MatchItem key={match?.id}>
-              <LeftSpan>{match?.date}</LeftSpan>
-              {match?.loser?.loser} {match?.loser?.loserRace} vs
-              {match?.winner?.winner} {match?.winner?.winnerRace} <Check />
+              <LeftSpan>{match?.date.slice(2)}</LeftSpan>
+              {match?.loser?.loser} {match?.loser?.loserRace.slice(0, 1)} vs
+              {match?.winner?.winner} {match?.winner?.winnerRace.slice(0, 1)}{" "}
+              <Check />
               <RightSpan>{match?.map}</RightSpan>
             </MatchItem>
           );
