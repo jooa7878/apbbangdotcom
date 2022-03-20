@@ -26,11 +26,14 @@ const FormDiv = styled.div`
 
 const Input = styled.input`
   width: 100px;
-  border: 0;
   border-radius: 20px;
   padding: 5px 10px;
   text-align: center;
   margin-right: 10px;
+`;
+
+const DateInput = styled(Input)`
+  width: 200px;
 `;
 
 const Label = styled.label`
@@ -171,7 +174,7 @@ export default function InputResult() {
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
-      <input
+      <DateInput
         type="date"
         {...register("date", {
           required: "날짜를 입력해주세요",
